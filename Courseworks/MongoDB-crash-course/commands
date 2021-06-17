@@ -1,0 +1,24 @@
+ db.posts.update({title: 'Post One'},
+ {
+	$set: {
+		comments:[{
+            user: 'Levi Ackermann', 
+            body: 'Haha nice one Erwin',
+            date: Date()
+        },
+        {
+            user: 'Armin Arlerto',
+            body: 'Eren... ',
+            date: Date()
+        }
+        ]
+        }
+}
+)
+
+
+db.posts.find({
+    $text: {
+        $search: "\"Post T\""
+    }
+})
