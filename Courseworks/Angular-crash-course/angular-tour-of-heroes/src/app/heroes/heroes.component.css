@@ -54,3 +54,17 @@ h2 {
 input {
   padding: 0.5rem;
 }
+
+button.delete {
+  position: absolute;
+  left: 185px;
+  top: 5;
+  color: #525252;
+  font-size: 1.1rem;
+  padding: 0px 10px 3px 10px;
+}
+
+button.delete:hover {
+  background-color: #ad343e;
+  color: white;
+}
