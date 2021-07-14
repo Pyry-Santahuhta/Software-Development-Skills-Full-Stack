@@ -23,3 +23,21 @@ button {
 * {
   font-family: Arial, Helvetica, sans-serif;
 }
+a {
+  display: block;
+  width: 150px;
+  text-align: center;
+  align-items: center;
+  height: 30px;
+  margin: 30px;
+  font-size: x-large;
+  background-color: #eee;
+  transition-timing-function: ease-out;
+  text-decoration: none;
+  /* Quick on the way out */
+  transition: 0.2s;
+}
+a:hover {
+  scale: 1.1;
+  background-color: #8b8b8b;
+}
