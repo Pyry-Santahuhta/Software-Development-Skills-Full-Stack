@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const passport = require("passport");
 const jwt = require("jsonwebtoken");
-
+const config = require("../config/database");
 const User = require("../models/user");
 
 //Registration
@@ -37,13 +37,13 @@ router.post("/authenticate", (req, res, next) => {
     User.comparePassword(password, user.password, (err, isMatch) => {
       if (err) throw err;
       if (isMatch) {
-        const token = jwt.sign(user, config.secret, {
-          expiresIn: 604800, // One week
+        const token = jwt.sign({ data: user }, config.secret, {
+          expiresIn: 6048000, // Ten week
         });
 
         res.json({
           success: true,
-          token: "JWT" + token,
+          token: "JWT " + token,
           user: {
             id: user._id,
             name: user.name,
@@ -52,16 +52,21 @@ router.post("/authenticate", (req, res, next) => {
           },
         });
       } else {
-        return res.json({ success: false, msg: "Wrong passwords" });
+        return res.json({ success: false, msg: "Wrong password" });
       }
     });
   });
 });
 
 //Profile page
-router.get("/profile", (req, res, next) => {
-  res.send("PROFILE");
-});
+router.get(
+  "/profile",
+  passport.authenticate("jwt", { session: false }),
+  (req, res, next) => {
+    console.log(req.user);
+    res.json({ user: req.user });
+  }
+);
 
 //Validation
 router.get("/validate", (req, res, next) => {
