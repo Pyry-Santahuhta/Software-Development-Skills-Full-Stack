@@ -1,0 +1,21 @@
+{
+  "name": "mean-auth-app",
+  "version": "1.0.0",
+  "description": "MEAN stack authentication application",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app"
+  },
+  "dependencies": {
+    "express": "*",
+    "mongoose": "*",
+    "bcryptjs": "*",
+    "cors": "*",
+    "jsonwebtoken": "*",
+    "body-parser": "*",
+    "passport": "*",
+    "passport-jwt": "*"
+  },
+  "author": "Pyry Santahuhta",
+  "license": "ISC"
+}
